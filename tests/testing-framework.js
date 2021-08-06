@@ -1,45 +1,44 @@
-const Module = require('../main.js');
+// Try to simulate simplest jest framework functionality
 
-// Try to simulate simplest test framework functionality
+// Just varialbes containing ✓ and ✕ characters
 const ok = String.fromCodePoint(10003);
 const fail = String.fromCodePoint(10005);
 
-// First test case
-function firstTest() {
-  const expected = 10;
-  const a = 7;
-  const b = 3;
-
-  const res = Module.sum(a, b);
-
-  try {
-    if (res === expected) {
-      console.log(`   ${ok} ${a} + ${b} is ${res}`);
-    } else {
-      throw new Error(`   ${fail} expected ${expected}, instead got ${res}`);
-    }
-  } catch(e) {
-    console.log(e.message);
+// Create a special error class for
+// all matchers' errors
+class ExpectationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ExpectationError';
   }
 }
-firstTest();
 
-// Second test case
-function secondTest() {
-  const expected = 6;
-  const a = 10;
-  const b = 4;
-
-  const res = Module.subtract(a, b);
-
+// Simulate jest test behavior
+const test = function(description, cb) {
   try {
-    if (res === expected) {
-      console.log(`   ${ok} ${a} - ${b} == ${res}`);
-    } else {
-      throw new Error(`   ${fail} expected ${expected}, instead got ${res}`);
-    }
+    cb();
+    console.log(`${ok} ${description}`);
   } catch(e) {
-    console.log(e.message);
+    console.log(`${fail} ${description}\n`);
+    console.log(`   ${e.name}:\n ${e.message}`);
   }
-}
-secondTest();
+};
+
+
+// Simulate jest expect behavior
+// Here will all of the matchers be
+const expect = function(received) {
+  return {
+    toBe(expected) {
+      const error = new ExpectationError(`
+    !received is not equal to expected
+      Expected: ${expected}
+      Received: ${received}
+      `);
+      if (!Object.is(received, expected)) throw error;
+      return true;
+    }
+  }
+};
+
+module.exports = {test, expect};

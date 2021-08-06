@@ -4,7 +4,7 @@ const Module = {
   },
   subtract(a, b) {
     return a - b;
-  },
+  }
 };
 
 module.exports = Module;
