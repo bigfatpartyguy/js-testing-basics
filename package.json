@@ -1,0 +1,13 @@
+{
+  "name": "js-testing-basics",
+  "version": "1.0.0",
+  "description": "A repo to learn the basics of JavaScript testing",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tdd"
+  ],
+  "author": "Maksim Morozov <maxmorozov.art@gmail.com>",
+  "license": "MIT"
+}
