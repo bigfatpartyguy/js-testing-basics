@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "A repo to learn the basics of JavaScript testing",
   "scripts": {
-    "test": "node tests/**-test.js"
+    "test": "jest"
   },
   "keywords": [
     "tdd"
   ],
   "author": "Maksim Morozov <maxmorozov.art@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }
