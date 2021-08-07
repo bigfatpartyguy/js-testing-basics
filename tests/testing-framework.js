@@ -14,9 +14,9 @@ class ExpectationError extends Error {
 }
 
 // Simulate jest test behavior
-const test = function(description, cb) {
+const test = async function(description, cb) {
   try {
-    cb();
+    await cb();
     console.log(`${ok} ${description}`);
   } catch(e) {
     console.log(`${fail} ${description}\n`);

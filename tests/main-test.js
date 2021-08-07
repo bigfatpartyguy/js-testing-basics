@@ -24,3 +24,24 @@ test('subtract 6 from 10 to equal 4', () => {
   expect(res).toBe(expected);
 });
 
+// Test async functionality
+
+test('adds 4 + 7 to equal 11', async () => {
+  const a = 4;
+  const b = 7;
+  const expected = 11;
+
+  const res = await Module.sumSync(a, b);
+
+  expect(res).toBe(expected);
+});
+
+test('subtract 12 from 37 to equal 25', async () => {
+  const a = 12;
+  const b = 37;
+  const expected = 25;
+
+  const res = await Module.subtractSync(a, b);
+
+  expect(res).toBe(expected);
+})
